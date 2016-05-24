@@ -1,0 +1,13 @@
+netbeans
+project SampleProject
+clean
+compile
+clean
+compile
+project SampleProject
+clean
+compile
+project SampleProject
+compile
+project SampleProject
+compile
