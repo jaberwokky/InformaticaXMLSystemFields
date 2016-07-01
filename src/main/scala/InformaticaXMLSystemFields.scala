@@ -7,7 +7,6 @@
 import scala.xml._
 import scala.xml.transform._
 import scala.xml.Elem
-import scala.xml.factory.XMLLoader
 import java.io._
 
 object InformaticaXMLSystemFields {
@@ -16,14 +15,9 @@ object InformaticaXMLSystemFields {
    * @param args the command line arguments
    */
   def main(args: Array[String]): Unit = {
-    val f = javax.xml.parsers.SAXParserFactory.newInstance()
-
-    f.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
-
-    val p = f.newSAXParser()
-
-    val xml = scala.xml.XML.withSAXParser(p).load(args(0))
-
+    
+    val xml = scala.xml.XML.load(args(0))
+    
     object MainConnectionTransform extends RewriteRule {
       override def transform(n: Node): Seq[Node] = n match {
         case map @ <MAPPING>{ therms @ _* }</MAPPING> => {
